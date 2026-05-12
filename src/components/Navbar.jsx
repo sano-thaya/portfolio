@@ -58,7 +58,7 @@ const Navbar = () => {
                 </a>
               ))}
             </div>
-            <a href="/cv.pdf" download className="button button-secondary nav-cta">
+            <a href="src/assets/Sanojan_Thayapran.pdf" download className="button button-secondary nav-cta">
               Download CV 
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
