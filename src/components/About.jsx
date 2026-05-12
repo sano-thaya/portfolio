@@ -20,52 +20,39 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-white dark:bg-blue-900/50 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-blue-950 dark:text-white mb-4">
-            About Me
-          </h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
+    <section id="about" className="section">
+      <div className="container section-inner">
+        <div className="section-header">
+          <span className="section-kicker">About</span>
+          <h2 className="section-title">Focused on clean, dependable software.</h2>
+          <p className="section-subtitle">
+            I care about architecture, polish, and predictable delivery. Every detail is built with clarity and intent.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 text-lg text-blue-800 dark:text-blue-200">
+        <div className="about-grid">
+          <div className="about-text">
             <p>
-              Hello! I'm a Computer Science student with a strong passion for software engineering. 
-              My journey in tech started with a curiosity about how websites work, which quickly 
-              evolved into a deep interest in building full-stack applications.
+              Hello! I am a Computer Science student with a strong passion for software engineering.
+              My journey started with curiosity about how websites work and evolved into building full stack systems.
             </p>
             <p>
-              My primary career goal is to become a versatile Software Engineer who can bridge the gap 
-              between user experience and backend architecture. I enjoy the creative aspect of frontend 
-              development with React, as well as the logical challenges of backend systems using Java Spring Boot.
+              My goal is to become a versatile Software Engineer who can bridge experience design and backend architecture.
+              I enjoy crafting React interfaces as much as building dependable Java Spring Boot services.
             </p>
             <p>
-              When I'm not coding or studying, you can find me participating in hackathons, exploring 
-              new technologies, or contributing to open-source projects. I'm always eager to learn 
-              and collaborate on exciting ideas.
+              Outside of coursework, I join hackathons, explore new technologies, and contribute to open source.
+              I am always eager to learn and collaborate on ambitious ideas.
             </p>
           </div>
 
-          <div className="grid gap-6">
+          <div className="about-cards">
             {highlights.map((item, index) => (
-              <div 
-                key={index} 
-                className="bg-white dark:bg-blue-900 p-6 rounded-2xl border border-blue-50 dark:border-blue-800 hover:shadow-md transition-all hover:-translate-y-1"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-white dark:bg-blue-950 rounded-xl shadow-sm">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-blue-950 dark:text-white mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-blue-800 dark:text-blue-300">
-                      {item.description}
-                    </p>
-                  </div>
+              <div key={index} className="glass-card highlight-card">
+                <div className="highlight-icon">{item.icon}</div>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
                 </div>
               </div>
             ))}

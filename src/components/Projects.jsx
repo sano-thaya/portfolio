@@ -4,110 +4,106 @@ import { FaGithub } from 'react-icons/fa';
 const Projects = () => {
   const projects = [
     {
-      title: "Chloride Diffusion Analyzer (Web Application) ",
-      description: " Extended a Python-based GUI application originally developed for engineering usage into",
-      tech: ["React", "Javascript"],
-      github: "https://github.com/sano-thaya/Chloride-Calculator-web-app.git",
-      demo: "https://chloride-calculator-web-app.vercel.app/"
+      title: "Chloride Diffusion Analyzer (Web Application)",
+      description: "Extended a Python based GUI tool into a modern web application for engineering workflows.",
+      tech: ["React", "JavaScript"],
+      links: [
+        { label: "Code", href: "https://github.com/sano-thaya/Chloride-Calculator-web-app.git", icon: "github" },
+        { label: "Live Demo", href: "https://chloride-calculator-web-app.vercel.app/", icon: "external" }
+      ]
     },
     {
       title: "TestLang++(Domain-Specific Language for API Testing)",
       description: "Designed a custom domain-specific language (DSL) to simplify backend API testing.",
       tech: ["Java", "Jflex", "Cup"],
-      github: "https://github.com/sano-thaya/testlang_plus.git",
+      links: [
+        { label: "Code", href: "https://github.com/sano-thaya/testlang_plus.git", icon: "github" }
+      ]
     },
     {
-      title: "Employee Management System – Backend API ",
-      description: "Designed and developed a web-based system to manage employee records, roles, and or-ganizational data",
+      title: "Employee Management System - Backend API",
+      description: "Designed and developed an API to manage employee records, roles, and organizational data.",
       tech: ["Java", "REST API"],
-      github: "https://github.com/sano-thaya/employee-management-system-api.git"
+      links: [
+        { label: "Code", href: "https://github.com/sano-thaya/employee-management-system-api.git", icon: "github" }
+      ]
     },
     {
-      title: " Hotel Management System – Web Application",
-      description: "Collaborated in a team of four to build a full-stack hotel and room system for a university course",
+      title: "Hotel Management System - Web Application",
+      description: "Collaborated in a team of four to build a full stack hotel and room system for a university course.",
       tech: ["Java", "React", "MySQL", "REST API"],
-      github_Frontend: "https://github.com/Jenitha23/Hotel-Management-System-Frontend.git",
-      github_Backend: "https://github.com/Jenitha23/Hotel-Management-System-Backend.git",
-      demo: "https://frontend-palmbeachresort.vercel.app/"
+      links: [
+        { label: "Frontend", href: "https://github.com/Jenitha23/Hotel-Management-System-Frontend.git", icon: "github" },
+        { label: "Backend", href: "https://github.com/Jenitha23/Hotel-Management-System-Backend.git", icon: "github" },
+        { label: "Live Demo", href: "https://frontend-palmbeachresort.vercel.app/", icon: "external" }
+      ]
 
     },
     {
-      title: " Fault-Tolerant-Distributed-Messaging-System",
-      description: " Implemented features to ensure system reliability during component failures. ",
+      title: "Fault-Tolerant-Distributed-Messaging-System",
+      description: "Implemented features to ensure reliability during component failures in distributed systems.",
       tech: ["Java"],
-      github: "https://github.com/Jenitha23/Fault-Tolerant-Distributed-Messaging-System-GRP-17.git",
+      links: [
+        { label: "Code", href: "https://github.com/Jenitha23/Fault-Tolerant-Distributed-Messaging-System-GRP-17.git", icon: "github" }
+      ]
 
     }
   ];
 
+  const renderLinkIcon = (icon) => {
+    if (icon === "external") {
+      return <ExternalLink size={16} />;
+    }
+
+    return <FaGithub size={16} />;
+  };
+
   return (
-    <section id="projects" className="py-24 bg-white dark:bg-blue-900/50 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-blue-950 dark:text-white mb-4">
-            Featured Projects
-          </h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
-          <p className="mt-6 text-blue-800 dark:text-blue-300 max-w-2xl mx-auto text-lg">
-            Some of my recent work that showcases my technical skills and problem-solving abilities.
+    <section id="projects" className="section">
+      <div className="container section-inner">
+        <div className="section-header">
+          <span className="section-kicker">Projects</span>
+          <h2 className="section-title">Selected work with measurable impact.</h2>
+          <p className="section-subtitle">
+            Recent builds that highlight my focus on clean architecture, testing, and reliable delivery.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="projects-grid">
           {projects.map((project, idx) => (
-            <div
-              key={idx}
-              className="bg-white dark:bg-blue-900 rounded-3xl overflow-hidden border border-blue-50 dark:border-blue-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col"
-            >
-              <div className="h-48 bg-gradient-to-br from-blue-100 to-sky-100 dark:from-blue-900/40 dark:to-sky-900/40 flex items-center justify-center p-6 relative group">
-                <div className="w-full h-full bg-white/50 dark:bg-blue-950/50 rounded-xl backdrop-blur-sm border border-white/20 dark:border-blue-800/50 flex items-center justify-center">
-                  <span className="text-blue-300 font-medium tracking-wider uppercase text-sm">Project Preview</span>
+            <article key={idx} className="glass-card project-card">
+              <div className="project-cover">
+                <div className="project-cover-inner">
+                  <span>Featured Build</span>
                 </div>
               </div>
 
-              <div className="p-8 flex-1 flex flex-col">
-                <h3 className="text-2xl font-bold text-blue-950 dark:text-white mb-3">
-                  {project.title}
-                </h3>
-                <p className="text-blue-800 dark:text-blue-300 mb-6 flex-1 line-clamp-3">
-                  {project.description}
-                </p>
+              <div className="project-body">
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
 
-                <div className="flex flex-wrap gap-2 mb-8">
+                <div className="project-tags">
                   {project.tech.map((tech, techIdx) => (
-                    <span
-                      key={techIdx}
-                      className="px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-semibold rounded-full"
-                    >
-                      {tech}
-                    </span>
+                    <span key={techIdx}>{tech}</span>
                   ))}
                 </div>
 
-                <div className="flex items-center gap-4 mt-auto">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-blue-800 dark:text-blue-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium text-sm"
-                  >
-                    <FaGithub size={18} />
-                    Code
-                  </a>
-                  {project.demo && (
+                <div className="project-actions">
+                  {project.links.map((link, linkIdx) => (
                     <a
-                      href={project.demo}
+                      key={linkIdx}
+                      href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-blue-800 dark:text-blue-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium text-sm"
+                      className="project-link"
                     >
-                      <ExternalLink size={18} />
-                      Live Demo
+                      {renderLinkIcon(link.icon)}
+                      {link.label}
                     </a>
-                  )}
+                  ))}
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

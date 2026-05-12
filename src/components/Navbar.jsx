@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
-const Navbar = ({ darkMode, toggleDarkMode }) => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -36,87 +36,71 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   }, []);
 
   return (
-    <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${scrolled
-          ? 'bg-white/80 dark:bg-blue-950/80 backdrop-blur-md shadow-sm py-3'
-          : 'bg-transparent py-5'
-        }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          <div className="flex-shrink-0">
-            <a
-              href="#home"
-              className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600"
-            >
-              Dev.Portfolio
-            </a>
-          </div>
+    <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
+      <div className="container">
+        <div className="navbar-shell">
+          <a href="#home" className="brand">
+            <span className="brand-logo">
+              <img src="src/assets/profile 2.png" alt="Sanojan portrait" />
+            </span>
+            <span className="brand-text">Sanojan</span>
+          </a>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            <div className="flex space-x-6">
+          <div className="nav-desktop">
+            <div className="nav-links">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`text-sm font-medium transition-colors hover:text-blue-500 ${activeSection === link.name.toLowerCase()
-                      ? 'text-blue-600 dark:text-blue-400'
-                      : 'text-blue-800 dark:text-blue-200'
-                    }`}
+                  className={`nav-link ${activeSection === link.name.toLowerCase() ? 'active' : ''}`}
                 >
                   {link.name}
                 </a>
               ))}
             </div>
-
-            <button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-full hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors"
-              aria-label="Toggle Dark Mode"
-            >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
+            <a href="/cv.pdf" download className="button button-secondary nav-cta">
+              Download CV 
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-4">
-            <button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-full hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors"
-            >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-blue-800 dark:text-blue-200 hover:text-blue-500"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="nav-toggle"
+            aria-label="Toggle navigation"
+            aria-expanded={isOpen}
+          >
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden absolute w-full bg-white dark:bg-blue-950 shadow-lg border-b border-blue-100 dark:border-blue-900">
-          <div className="px-4 pt-2 pb-6 space-y-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className={`block px-3 py-2 rounded-md text-base font-medium ${activeSection === link.name.toLowerCase()
-                    ? 'text-blue-600 bg-blue-50 dark:bg-blue-900 dark:text-blue-400'
-                    : 'text-blue-800 dark:text-blue-200 hover:bg-blue-50 dark:hover:bg-blue-900'
-                  }`}
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
+      <div className={`nav-mobile ${isOpen ? 'open' : ''}`}>
+        <div className="nav-mobile-inner">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
+              className={`nav-link ${activeSection === link.name.toLowerCase() ? 'active' : ''}`}
+            >
+              {link.name}
+            </a>
+          ))}
+          <a
+            href="/cv.pdf"
+            download
+            onClick={() => setIsOpen(false)}
+            className="button button-primary nav-mobile-cta"
+          >
+            Download CV
+          </a>
         </div>
-      )}
+      </div>
     </nav>
   );
 };
