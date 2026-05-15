@@ -1,5 +1,5 @@
 import { ArrowRight } from 'lucide-react';
-import heroImage from '../assets/hero.png';
+import heroImage from '../assets/profile 2.png';
 
 const Hero = () => {
   return (
@@ -24,11 +24,13 @@ const Hero = () => {
 
         <div className="hero-image-wrap">
           <div className="hero-image-glow"></div>
-          <img
-            src={heroImage}
-            alt="Abstract layered platform"
-            className="hero-image"
-          />
+          <div className="hero-image-frame">
+            <img
+              src={heroImage}
+              alt="Portrait of Sanojan Thayaparan"
+              className="hero-image"
+            />
+          </div>
         </div>
 
         <div className="hero-cta">
