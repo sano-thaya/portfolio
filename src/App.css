@@ -464,6 +464,10 @@ button:focus-visible {
   background: linear-gradient(135deg, rgba(124, 58, 237, 0.25), rgba(56, 189, 248, 0.15));
 }
 
+.project-cover-featured {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(124, 58, 237, 0.28));
+}
+
 .project-cover::after {
   content: "";
   position: absolute;
@@ -478,6 +482,11 @@ button:focus-visible {
   object-fit: cover;
   display: block;
   filter: saturate(1.1);
+}
+
+.project-image-featured {
+  transform: scale(1.04);
+  filter: saturate(1.25) contrast(1.05);
 }
 
 .project-cover-badge {

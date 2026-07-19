@@ -2,7 +2,8 @@ import { ExternalLink } from 'lucide-react';
 import { useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import testLangImage from '../assets/DSL.png';
-import chlorideImage from '../assets/chloride_diffusion.png';
+import chlorideImage from '../assets/Chloride_diffusion.png';
+
 
 const Projects = () => {
   const [expandedProjects, setExpandedProjects] = useState({});
@@ -51,6 +52,7 @@ const Projects = () => {
       focus: "Engineering Workflow",
       description: "Extended a Python-based GUI tool into a modern web application for engineering workflows.",
       image: chlorideImage,
+      featured: true,
       tech: ["React", "JavaScript"],
       links: [
         { label: "Code", href: "https://github.com/sano-thaya/Chloride-Calculator-web-app.git", icon: "github" },
@@ -112,11 +114,11 @@ const Projects = () => {
         <div className="projects-grid">
           {projects.map((project, idx) => (
             <article key={idx} className="glass-card project-card">
-              <div className="project-cover">
+              <div className={`project-cover ${project.featured ? 'project-cover-featured' : ''}`}>
                 <img
                   src={project.image}
                   alt={`${project.title} preview`}
-                  className="project-image"
+                  className={`project-image ${project.featured ? 'project-image-featured' : ''}`}
                   loading="lazy"
                 />
                 <div className="project-cover-badge">Featured Build</div>
