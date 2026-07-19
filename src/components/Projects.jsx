@@ -2,7 +2,7 @@ import { ExternalLink } from 'lucide-react';
 import { useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import testLangImage from '../assets/DSL.png';
-import chlorideImage from '../assets/chloride diffusion.png';
+import chlorideImage from '../assets/chloride_ diffusion.png';
 
 const Projects = () => {
   const [expandedProjects, setExpandedProjects] = useState({});
