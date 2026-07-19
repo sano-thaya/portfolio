@@ -1,5 +1,6 @@
 import { Mail } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import cvPdf from '../assets/Sanojan_Thayapran.pdf';
 
 const Contact = () => {
   return (
@@ -57,10 +58,11 @@ const Contact = () => {
           </div>
 
           <div className="contact-cta">
-            <a href="mailto:sanojan.thayaparan@gmail.com" className="button button-primary">
-              Start a Conversation
+            <a href={cvPdf} download className="button button-primary">
+              Download CV
             </a>
           </div>
+
         </div>
       </div>
     </section>

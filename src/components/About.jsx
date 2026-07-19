@@ -1,21 +1,26 @@
-import { Code2, Server, Laptop } from 'lucide-react';
+import { Server, ShieldCheck, Cloud, Cpu } from 'lucide-react';
 
 const About = () => {
   const highlights = [
     {
-      icon: <Laptop className="w-6 h-6 text-blue-500" />,
-      title: "Frontend Development",
-      description: "Building responsive and interactive user interfaces using React and modern CSS."
-    },
-    {
-      icon: <Server className="w-6 h-6 text-purple-500" />,
+      icon: <Server className="w-6 h-6 text-blue-500" />,
       title: "Backend Development",
-      description: "Creating robust APIs and services with Java Spring Boot and Node.js."
+      description: "Building dependable APIs and services with a focus on clarity, maintainability, and clean architecture."
     },
     {
-      icon: <Code2 className="w-6 h-6 text-indigo-500" />,
-      title: "Problem Solving",
-      description: "Applying data structures and algorithms to solve complex technical challenges."
+      icon: <ShieldCheck className="w-6 h-6 text-purple-500" />,
+      title: "Software Testing & API Testing",
+      description: "Approaching features with validation in mind and building confidence through test-oriented workflows."
+    },
+    {
+      icon: <Cloud className="w-6 h-6 text-cyan-500" />,
+      title: "AWS Cloud Services",
+      description: "Interested in deploying and supporting software in cloud environments with production thinking."
+    },
+    {
+      icon: <Cpu className="w-6 h-6 text-indigo-500" />,
+      title: "Parallel Computing",
+      description: "Comfortable working with performance-aware and distributed problem solving concepts."
     }
   ];
 
@@ -24,25 +29,22 @@ const About = () => {
       <div className="container section-inner">
         <div className="section-header">
           <span className="section-kicker">About</span>
-          <h2 className="section-title">Focused on clean, dependable software.</h2>
+          <h2 className="section-title">Focused on backend quality, testing confidence, and cloud-ready delivery.</h2>
           <p className="section-subtitle">
-            I care about architecture, polish, and predictable delivery. Every detail is built with clarity and intent.
+            I care about architecture, polish, and predictable delivery. My goal is to contribute as a Software Engineer or QA Engineer intern in teams that value reliability.
           </p>
         </div>
 
         <div className="about-grid">
           <div className="about-text">
             <p>
-              Hello! I am a Computer Science student with a strong passion for software engineering.
-              My journey started with curiosity about how websites work and evolved into building full stack systems.
+              I am a Computer Science undergraduate at SLIIT with hands-on experience in academic and personal software development projects.
             </p>
             <p>
-              My goal is to become a versatile Software Engineer who can bridge experience design and backend architecture.
-              I enjoy crafting React interfaces as much as building dependable Java Spring Boot services.
+              My work centers on backend development, software testing, API testing, AWS cloud services, and parallel computing, with a focus on building maintainable software.
             </p>
             <p>
-              Outside of coursework, I join hackathons, explore new technologies, and contribute to open source.
-              I am always eager to learn and collaborate on ambitious ideas.
+              I am especially interested in internships where I can strengthen engineering practices across the development lifecycle and learn from real-world delivery.
             </p>
           </div>
 

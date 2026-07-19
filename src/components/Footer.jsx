@@ -5,7 +5,7 @@ const Footer = () => {
         <div>
           &copy; {new Date().getFullYear()} Sanojan Thayaparan. All rights reserved.
         </div>
-        <div>Built with React and Tailwind CSS</div>
+        <div>Built with React and Vite</div>
       </div>
     </footer>
   );

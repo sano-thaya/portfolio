@@ -1,5 +1,4 @@
 import { ArrowRight } from 'lucide-react';
-import heroImage from '../assets/profile 2.png';
 
 const Hero = () => {
   return (
@@ -12,26 +11,17 @@ const Hero = () => {
       </div>
 
       <div className="container hero-inner">
-        <span className="eyebrow">Software Engineer</span>
+        <span className="eyebrow">Aspiring Software Engineer</span>
         <h1 className="hero-title">
           Hi, I'm <span className="gradient-text">Sanojan Thayaparan</span>.
-          I build premium, reliable software with a focus on quality.
+          <span className="hero-title-secondary">
+            A Computer Science undergraduate focused on backend development, software testing, API testing, AWS cloud services, and parallel computing.
+          </span>
         </h1>
         <p className="hero-subtitle">
-          Computer Science student crafting scalable backend services and polished interfaces.
-          Currently focused on Java Spring Boot, React, and QA-minded delivery.
-        </p>
+          I build reliable software with clean APIs, maintainable architecture, and a test-aware mindset across the development lifecycle.
 
-        <div className="hero-image-wrap">
-          <div className="hero-image-glow"></div>
-          <div className="hero-image-frame">
-            <img
-              src={heroImage}
-              alt="Portrait of Sanojan Thayaparan"
-              className="hero-image"
-            />
-          </div>
-        </div>
+        </p>
 
         <div className="hero-cta">
           <a href="#projects" className="button button-primary">
@@ -41,12 +31,15 @@ const Hero = () => {
           <a href="#contact" className="button button-secondary">
             Contact Me
           </a>
+
         </div>
 
         <div className="hero-pills">
-          <span>QA Focused</span>
-          <span>Backend Systems</span>
-          <span>React Interfaces</span>
+          <span>Backend Development</span>
+          <span>Software Testing</span>
+          <span>API Testing</span>
+          <span>AWS Cloud Services</span>
+          <span>Parallel Computing</span>
         </div>
       </div>
     </section>
