@@ -1,72 +1,22 @@
-import { Mail } from 'lucide-react';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import cvPdf from '../assets/Sanojan_Thayapran.pdf';
+import Icon from './Icon';
 
-const Contact = () => {
-  return (
-    <section id="contact" className="section section-alt">
-      <div className="container section-inner">
-        <div className="section-header">
-          <span className="section-kicker">Contact</span>
-          <h2 className="section-title">Let's build something dependable together.</h2>
-          <p className="section-subtitle">
-            I am open to internships, software engineering roles, and collaborative projects.
-          </p>
-        </div>
-
-        <div className="contact-card">
-          <div className="contact-actions">
-            <a href="mailto:sanojan.thayaparan@gmail.com" className="contact-action">
-              <span className="contact-icon">
-                <Mail className="w-6 h-6" />
-              </span>
-              <div>
-                <p>Email</p>
-                <span>sanojan.thayaparan@gmail.com</span>
-              </div>
-            </a>
-
-            <a
-              href="https://github.com/sano-thaya"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-action"
-            >
-              <span className="contact-icon">
-                <FaGithub className="w-6 h-6" />
-              </span>
-              <div>
-                <p>GitHub</p>
-                <span>github.com/sano-thaya</span>
-              </div>
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/sanojan-thayaparn/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-action"
-            >
-              <span className="contact-icon">
-                <FaLinkedin className="w-6 h-6" />
-              </span>
-              <div>
-                <p>LinkedIn</p>
-                <span>linkedin.com/in/sanojan-thayaparn</span>
-              </div>
-            </a>
-          </div>
-
-          <div className="contact-cta">
-            <a href={cvPdf} download className="button button-primary">
-              Download CV
-            </a>
-          </div>
-
-        </div>
+const Contact = () => (
+  <section className="contact wrap section-space" id="contact" aria-labelledby="contact-title">
+    <div className="contact-panel">
+      <div>
+        <p className="eyebrow">Contact</p>
+        <h2 id="contact-title">Let’s get in touch</h2>
+        <p>I’m looking for a six-month software engineering internship where I can contribute to backend development and learn from an engineering team.</p>
       </div>
-    </section>
-  );
-};
+      <div className="contact-actions">
+        <a className="button button-primary" href="mailto:nsanojan.thayaparan@gmail.com">Email me <Icon name="mail" /></a>
+        <a className="button button-secondary" href="https://www.linkedin.com/in/sanojan-thayaparn/" target="_blank" rel="noopener noreferrer">LinkedIn <Icon name="external" /></a>
+        <a className="button button-secondary" href="https://github.com/sano-thaya" target="_blank" rel="noopener noreferrer">GitHub <Icon name="external" /></a>
+        <a className="button button-secondary" href={cvPdf} download>Download CV</a>
+      </div>
+    </div>
+  </section>
+);
 
 export default Contact;

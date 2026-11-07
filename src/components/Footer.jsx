@@ -1,14 +1,12 @@
-const Footer = () => {
-  return (
-    <footer className="footer">
-      <div className="container footer-inner">
-        <div>
-          &copy; {new Date().getFullYear()} Sanojan Thayaparan. All rights reserved.
-        </div>
-        <div>Built with React and Vite</div>
-      </div>
-    </footer>
-  );
-};
+import Icon from './Icon';
+
+const Footer = ({ isCaseStudy = false }) => (
+  <footer className="wrap footer">
+    <span>© {new Date().getFullYear()} Sanojan Thayaparan</span>
+    <a href={isCaseStudy ? '/#contact' : '#top'}>
+      {isCaseStudy ? 'Get in touch' : 'Back to top'} <Icon name={isCaseStudy ? 'external' : 'up'} />
+    </a>
+  </footer>
+);
 
 export default Footer;

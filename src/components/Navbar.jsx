@@ -1,110 +1,73 @@
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
-import profileImage from '../assets/profile 2.png';
-import cvPdf from '../assets/Sanojan_Thayapran.pdf';
+import { useEffect, useState } from 'react';
 
-const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Focus', href: '#focus' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Contact', href: '#contact' },
+const links = [
+  { label: 'Projects', hash: '#work' },
+  { label: 'Experience', hash: '#experience' },
+  { label: 'About', hash: '#about' },
+  { label: 'Contact', hash: '#contact' },
 ];
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const Navbar = ({ isCaseStudy = false }) => {
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [progress, setProgress] = useState(0);
+  const [activeHash, setActiveHash] = useState('');
+  const prefix = isCaseStudy ? '/' : '';
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+    let frame = 0;
 
-      // Active section highlight
-      const sections = navLinks.map(link => link.name.toLowerCase());
-      const scrollPosition = window.scrollY + 200;
+    const update = () => {
+      frame = 0;
+      setScrolled(window.scrollY > 16);
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(scrollable > 0 ? Math.min(window.scrollY / scrollable, 1) : 0);
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sections[i]);
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i]);
-          break;
-        }
+      if (!isCaseStudy) {
+        const current = links
+          .filter(({ hash }) => document.querySelector(hash)?.getBoundingClientRect().top <= window.innerHeight * 0.4)
+          .at(-1);
+        setActiveHash(current?.hash || '');
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      window.cancelAnimationFrame(frame);
+    };
+  }, [isCaseStudy]);
 
   return (
-    <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
-      <div className="container">
-        <div className="navbar-shell">
-          <a href="#home" className="brand">
-            <span className="brand-logo">
-              <img src={profileImage} alt="Portrait of Sanojan Thayaparan" />
-            </span>
-            <span className="brand-text">Sanojan</span>
-          </a>
-
-          <div className="nav-desktop">
-            <div className="nav-links">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className={`nav-link ${activeSection === link.name.toLowerCase() ? 'active' : ''}`}
-                >
-                  {link.name}
-                </a>
-              ))}
-            </div>
-            <a href={cvPdf} download className="button button-secondary nav-cta">
-              Download CV 
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-              </svg>
-            </a>
-          </div>
-
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="nav-toggle"
-            aria-label="Toggle navigation"
-            aria-expanded={isOpen}
-          >
-            {isOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
-      </div>
-
-      <div className={`nav-mobile ${isOpen ? 'open' : ''}`}>
-        <div className="nav-mobile-inner">
-          {navLinks.map((link) => (
+    <header className={`site-header ${scrolled ? 'is-scrolled' : ''}`} id="top">
+      <div className="wrap header-inner">
+        <a className="brand" href={isCaseStudy ? '/' : '#top'} aria-label="Sanojan Thayaparan, home">
+          <span className="brand-avatar">
+            <img className="brand-mark" src="/assets/sanojan-thayaparan.webp" alt="" width="48" height="48" />
+          </span>
+          <span className="brand-name">Sanojan Thayaparan</span>
+        </a>
+        <nav className="nav" aria-label="Main navigation">
+          {links.map(({ label, hash }) => (
             <a
-              key={link.name}
-              href={link.href}
-              onClick={() => setIsOpen(false)}
-              className={`nav-link ${activeSection === link.name.toLowerCase() ? 'active' : ''}`}
+              key={label}
+              href={`${prefix}${hash}`}
+              className={label === 'Contact' ? 'nav-contact' : undefined}
+              aria-current={activeHash === hash ? 'location' : undefined}
             >
-              {link.name}
+              {label}
             </a>
           ))}
-          <a
-            href={cvPdf}
-            download
-            onClick={() => setIsOpen(false)}
-            className="button button-primary nav-mobile-cta"
-          >
-            Download CV
-          </a>
-        </div>
+        </nav>
       </div>
-    </nav>
+      <span className="reading-progress" style={{ transform: `scaleX(${progress})` }} aria-hidden="true" />
+    </header>
   );
 };
 
